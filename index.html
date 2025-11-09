@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rehan Khan — Inventor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* RESET */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      min-height: 100vh;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 3rem 1rem;
+      overflow-x: hidden;
+      background: #000 url('iron.png') center center / cover no-repeat fixed;
+      color: #39ff14;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    /* NO ::before — YE HATA DIYA! */
+
+    /* MAIN CARD */
+    .card {
+      width: 100%;
+      max-width: 880px;
+      border-radius: 14px;
+      padding: 48px;
+      background: 
+        radial-gradient(1200px 400px at 10% 10%, rgba(57, 255, 20, 0.03), transparent 6%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 50%);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      margin: 0 0 12px 0;
+      font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      animation: fadeUp 0.7s ease both 0.1s;
+    }
+
+    .subtitle {
+      margin: 0 0 18px 0;
+      font-weight: 700;
+      color: #39ff14;
+      opacity: 0.95;
+      animation: fadeUp 0.7s ease both 0.2s;
+    }
+
+    p.lead {
+      margin: 0 0 22px 0;
+      font-size: 1.05rem;
+      color: #39ff14;
+      opacity: 0.95;
+      line-height: 1.6;
+      animation: fadeUp 0.7s ease both 0.3s;
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      animation: fadeUp 0.7s ease both 0.45s;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: transparent;
+      border: 1px solid rgba(57, 255, 20, 0.22);
+      color: #fff;
+      padding: 10px 16px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      box-shadow: 0 6px 18px rgba(57, 255, 20, 0.06);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(57, 255, 20, 0.1);
+    }
+
+    .ghost {
+      color: #39ff14;
+      opacity: 0.7;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .glow {
+      color: #39ff14;
+      text-shadow: 0 0 10px rgba(57, 255, 20, 0.14), 0 0 30px rgba(57, 255, 20, 0.06);
+      font-weight: 700;
+    }
+
+    .decor {
+      position: absolute;
+      right: -120px;
+      top: -80px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle at 30% 30%, rgba(57, 255, 20, 0.04), transparent 18%);
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scroll-text {
+      color: #fff;
+      opacity: 0.8;
+      margin-top: 24px;
+      font-size: 1rem;
+      text-align: center;
+      animation: fadeUp 0.7s ease both 0.55s;
+    }
+
+    .inspire {
+      margin-top: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease both 0.6s;
+      animation-fill-mode: forwards;
+    }
+
+    .inspire p {
+      font-style: italic;
+      line-height: 1.75;
+      color: #e0ffcd;
+      text-shadow: 0 0 8px rgba(57,255,20,0.2);
+    }
+
+    .inspire p:first-child {
+      margin-bottom: 12px;
+    }
+
+    /* SOCIAL POPUP */
+    .social-popup, .overlay {
+      display: none;
+      position: fixed;
+      z-index: 999;
+    }
+
+    .social-popup {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.95);
+      border: 1px solid #39ff14;
+      border-radius: 14px;
+      padding: 24px 32px;
+      box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+      text-align: center;
+      max-width: 90%;
+      backdrop-filter: blur(10px);
+    }
+
+    .overlay {
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 998;
+    }
+
+    .social-links a {
+      display: block;
+      margin: 8px 0;
+      padding: 10px 14px;
+      border: 1px solid rgba(57, 255, 20, 0.2);
+      border-radius: 8px;
+      color: #39ff14;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background: rgba(57, 255, 20, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .close-btn {
+      margin-top: 16px;
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* FOOTER */
+    .stark-footer {
+      margin-top: 60px;
+      width: 100%;
+      max-width: 880px;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid rgba(57, 255, 20, 0.15);
+    }
+
+    .footer-glow {
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #39ff14, transparent);
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .card { padding: 28px; }
+      .cta { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+      .stark-footer { margin-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="decor"></div>
+    
+    <h1>Welcome to my first website | I AM REHAN</h1>
+    <div class="subtitle">Part-time human. Full-time innovator.</div>
+
+    <p class="lead">
+      Yo, I’m <span class="glow">Rehan Khan</span> —  
+      <strong>Part-time human, full-time chaos engine.</strong>  
+      I code in <strong>Python</strong> faster than you can say “syntax error,”  
+      debug <strong>C++</strong> with a coffee and a smirk,  
+      and once built a <strong>mini arc reactor</strong> using a toaster and 3 lines of <strong>embedded C</strong>.  
+      My <strong>React apps</strong> load before you blink.  
+      My <strong>rockets</strong> reach orbit before your Wi-Fi connects.  
+      I don’t break the laws of physics — <strong>I patch them in production.</strong>
+    </p>
+    
+    <p class="lead ghost">
+      If you’re here to see <strong>impossible become “done”</strong> —  
+      <strong>grab popcorn.</strong>  
+      This isn’t a portfolio.  
+      This is a <span class="glow">live demo of the next 50 years.</span>
+    </p>
+
+    <div class="cta">
+      <button class="btn" id="followBtn">Follow</button>
+      <a class="btn" href="projects.html">See Projects</a>
+      <a class="btn" href="myskills.html">Check My Skills</a>
+    </div>
+
+    <div class="inspire">
+      <p class="lead">
+        <span style="color: #39ff14; font-weight: 800;">I don’t build things to prove I can.</span><br>
+        I build them because the world isn’t ready for what’s next — <span class="glow">and I’m tired of waiting.</span><br>
+        <span style="font-size: 0.95rem; opacity: 0.9;">Every line of code, every reactor core, every launch — is a middle finger to “impossible.”</span>
+      </p>
+      <p class="lead ghost" style="margin-top: 12px; font-size: 0.98rem;">
+        So if you're here to watch history being written in real-time — <strong>buckle up.</strong>  
+        This isn’t a portfolio. This is a <span class="glow">launch sequence.</span>
+      </p>
+    </div>
+
+    <div class="scroll-text">Sometimes you have to run befor you can walk</div>
+  </div>
+
+  <!-- POPUP -->
+  <div class="overlay" id="overlay"></div>
+  <div class="social-popup" id="socialPopup">
+    <h2>Follow Me</h2>
+    <div class="social-links">
+      <a href="https://www.instagram.com/cosmicrehan?igsh=eGVqMHpsMGVxZzF5" target="_blank">Instagram</a>
+      <a href="https://x.com/RehanKhan17227" target="_blank">X (Twitter)</a>
+      <a href="https://www.youtube.com/channel/UChJtIBKKuz9TO3jPg7KUSWA/posts?pvf=CAM%253D" target="_blank">YouTube</a>
+      <a href="https://www.linkedin.com/in/rehan-khan-945547395 " target="_blank">LinkedIn</a>
+      <a href="https://github.com/Rehankhan26" target="_blank">GitHub</a>
+    </div>
+    <button class="close-btn">Close</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="stark-footer">
+    <div class="footer-content">
+      <p style="margin: 0; color: #39ff14; font-weight: 700; letter-spacing: 1px;">
+        <span style="color: #fff;">Rehan Khan</span> — <span style="font-style: italic;">Building the Future, One Arc Reactor at a Time</span>
+      </p>
+      <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+        © <span id="year"></span> | Not affiliated with Stark Industries (yet).
+      </p>
+    </div>
+    <div class="footer-glow"></div>
+  </footer>
+
+  <script>
+    const followBtn = document.getElementById('followBtn');
+    const popup = document.getElementById('socialPopup');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.querySelector('.close-btn');
+
+    function openPopup() {
+      popup.style.display = 'block';
+      overlay.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    followBtn.addEventListener('click', openPopup);
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', closePopup);
+    document.addEventListener('keydown', e => e.key === 'Escape' && closePopup());
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

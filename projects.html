@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — [Your Name]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --neon: #39ff14;
+      --heading: #ffffff;
+      --muted: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* === BODY & SCROLL FIX (SAB FILES MEIN YE DAAL) === */
+html {
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 3rem 1rem;
+  overflow-x: hidden;
+  background: #000 url('iron.png') center center / cover no-repeat fixed;
+  color: #39ff14;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+
+    @keyframes cssTwinkle {
+      0%, 100% { opacity: 0; transform: scale(0.4); }
+      50% { opacity: 0.8; transform: scale(1); }
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.7s ease both 0.1s;
+    }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--heading);
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: var(--neon);
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* PROJECTS GRID */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(57, 255, 20, 0.15);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      animation: fadeUp 0.7s ease both;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(57, 255, 20, 0.15);
+      border-color: var(--neon);
+    }
+
+    /* IMAGE WITH pimg1.png to pimg10.png */
+    .project-img {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #39ff14;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+
+    /* Default placeholder if image missing */
+    .project-img::after {
+      content: "pimg" attr(data-num) ".png";
+      opacity: 0.7;
+    }
+
+    .project-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .project-title {
+      color: var(--heading);
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+    /* YE <style> MEIN DAAL DE */
+.project-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  text-indent: -9999px;           /* ← YE TEXT HIDE KAREGA */
+}
+
+.project-img::before,
+.project-img::after {
+  content: none !important;
+}
+
+/* Optional: Glow on hover */
+.project-card:hover .project-img {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+}
+
+    .project-btn {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid rgba(57, 255, 20, 0.3);
+      color: var(--neon);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-top: 8px;
+    }
+
+    .project-btn:hover {
+      background: rgba(57, 255, 20, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(57, 255, 20, 0.2);
+    }
+
+    /* FOOTER */
+    .stark-footer {
+      margin-top: 80px;
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid rgba(57, 255, 20, 0.15);
+      position: relative;
+    }
+
+    .footer-glow {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon), transparent);
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+      border-radius: 2px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .header h1 { font-size: 2.2rem; }
+      .stark-footer { margin-top: 60px; }
+    }
+
+    @media (max-width: 480px) {
+      .project-card { margin: 0 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>My Projects</h1>
+    <p>10 groundbreaking inventions. Click to explore.</p>
+  </div>
+
+  <!-- PROJECTS GRID -->
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card" style="animation-delay: 0.1s;">
+      <div class="project-img" data-num="1" style="background-image: url('pimg1.png');"></div>
+      <div class="project-content">
+        <div class="project-title">BLACKY-A1</div>
+        <a href="p1.html" class="project-btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card" style="animation-delay: 0.2s;">
+      <div class="project-img" data-num="2" style="background-image: url('pimg2.png');"></div>
+      <div class="project-content">
+        <div class="project-title">RA-1</div>
+        <a href="p2.html" class="project-btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card" style="animation-delay: 0.3s;">
+      <div class="project-img" data-num="3" style="background-image: url('pimg3.png');"></div>
+      <div class="project-content">
+        <div class="project-title">precode</div>
+        <a href="p3.html" class="project-btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project-card" style="animation-delay: 0.5s;">
+      <div class="project-img" data-num="4" style="background-image: url('images/pimg4.png');"></div>
+      <div class="project-content">
+        <div class="project-title">no projects yet</div>
+        <a href="p4.html" class="project-btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 5 -->
+    <div class="project-card" style="animation-delay: 0.6s;">
+      <div class="project-img" data-num="4" style="background-image: url('images/pimg4.png');"></div>
+      <div class="project-content">
+        <div class="project-title">no projects yet</div>
+        <a href="p4.html" class="project-btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 6 -->
+    <div class="project-card" style="animation-delay: 0.7s;">
+      <div class="project-img" data-num="4" style="background-image: url('images/pimg4.png');"></div>
+      <div class="project-content">
+        <div class="project-title">no projects yet</div>
+        <a href="p4.html" class="project-btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 7 -->
+    <div class="project-card" style="animation-delay: 0.8s;">
+      <div class="project-img" data-num="4" style="background-image: url('images/pimg4.png');"></div>
+      <div class="project-content">
+        <div class="project-title">no projects yet</div>
+        <a href="p4.html" class="project-btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 8 -->
+    <div class="project-card" style="animation-delay: 0.9s;">
+      <div class="project-img" data-num="4" style="background-image: url('images/pimg4.png');"></div>
+      <div class="project-content">
+        <div class="project-title">no projects yet</div>
+        <a href="p4.html" class="project-btn">View Project</a>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="stark-footer">
+    <div style="position: relative; z-index: 2;">
+      <p style="margin: 0; color: #39ff14; font-weight: 700; letter-spacing: 1px;">
+        <span style="color: #fff;">[Your Name]</span> — <span style="font-style: italic;">Inventor. Builder. Future.</span>
+      </p>
+      <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+        © <span id="year"></span> | Stark Industries Approved
+      </p>
+    </div>
+    <div class="footer-glow"></div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

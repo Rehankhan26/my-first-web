@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Skills — [Your Name]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --neon: #39ff14;
+      --heading: #ffffff;
+      --muted: rgba(255, 255, 255, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* === BODY & SCROLL FIX (SAB FILES MEIN YE DAAL) === */
+html {
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 3rem 1rem;
+  overflow-x: hidden;
+  background: #000 url('iron.png') center center / cover no-repeat fixed;
+  color: #39ff14;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+  
+
+    @keyframes cssTwinkle {
+      0%, 100% { opacity: 0; transform: scale(0.4); }
+      50% { opacity: 0.8; transform: scale(1); }
+    }
+
+    /* === HEADER === */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.7s ease both 0.1s;
+    }
+
+    .header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      color: var(--heading);
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: var(--neon);
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === SECTION TITLE === */
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--neon);
+      margin: 2.5rem 0 1.5rem;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: var(--neon);
+      box-shadow: 0 0 10px var(--neon);
+    }
+
+    /* === SKILL BARS === */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .skill-category {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(57, 255, 20, 0.15);
+      backdrop-filter: blur(8px);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .skill-item {
+      margin-bottom: 18px;
+    }
+
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--heading);
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .skill-bar {
+      height: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #39ff14, #00ff6a);
+      border-radius: 5px;
+      width: 0;
+      transition: width 1.8s ease;
+      box-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+    }
+
+    /* === FOOTER === */
+    .stark-footer {
+      margin-top: 80px;
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid rgba(57, 255, 20, 0.15);
+      position: relative;
+    }
+
+    .footer-glow {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon), transparent);
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+      border-radius: 2px;
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.4rem; }
+      .stark-footer { margin-top: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>My Skills</h1>
+    <p>From code to cosmos — I build everything.</p>
+  </div>
+
+  <!-- === PROGRAMMING SKILLS === -->
+  <h2 class="section-title">Programming & IT</h2>
+  <div class="skills-grid">
+
+    <div class="skill-category" style="animation-delay: 0.2s;">
+      <div class="skill-item">
+        <div class="skill-label">Python <span>20%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="20"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">C / C++ <span>88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">JavaScript / React <span>92%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="92"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-category" style="animation-delay: 0.3s;">
+      <div class="skill-item">
+        <div class="skill-label">Node.js / Backend <span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Database (SQL/NoSQL) <span>87%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="87"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">DevOps / Cloud <span>78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="78"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- === ROCKET SCIENCE === -->
+  <h2 class="section-title">Rocket Science & Aerospace</h2>
+  <div class="skills-grid">
+
+    <div class="skill-category" style="animation-delay: 0.4s;">
+      <div class="skill-item">
+        <div class="skill-label">Orbital Mechanics <span>82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="82"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Propulsion Systems <span>88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Trajectory Design <span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="85"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-category" style="animation-delay: 0.5s;">
+      <div class="skill-item">
+        <div class="skill-label">Avionics <span>80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="80"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Flight Dynamics <span>83%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="83"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Re-entry Systems <span>76%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="76"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- === ELECTRICAL ENGINEERING === -->
+  <h2 class="section-title">Electrical Engineering</h2>
+  <div class="skills-grid">
+
+    <div class="skill-category" style="animation-delay: 0.6s;">
+      <div class="skill-item">
+        <div class="skill-label">Circuit Design <span>90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Embedded Systems <span>87%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="87"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Power Electronics <span>84%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="84"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-category" style="animation-delay: 0.7s;">
+      <div class="skill-item">
+        <div class="skill-label">Control Systems <span>86%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="86"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Signal Processing <span>81%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="81"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">PCB Design <span>89%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="89"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- === MECHANICAL ENGINEERING === -->
+  <h2 class="section-title">Mechanical Engineering</h2>
+  <div class="skills-grid">
+
+    <div class="skill-category" style="animation-delay: 0.8s;">
+      <div class="skill-item">
+        <div class="skill-label">CAD / SolidWorks <span>93%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="93"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">FEA / Stress Analysis <span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Thermodynamics <span>88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="88"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-category" style="animation-delay: 0.9s;">
+      <div class="skill-item">
+        <div class="skill-label">Fluid Dynamics <span>82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="82"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Material Science <span>86%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="86"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Manufacturing <span>80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-percent="80"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="stark-footer">
+    <div style="position: relative; z-index: 2;">
+      <p style="margin: 0; color: #39ff14; font-weight: 700; letter-spacing: 1px;">
+        <span style="color: #fff;">[Your Name]</span> — <span style="font-style: italic;">Master of All Domains</span>
+      </p>
+      <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+        © <span id="year"></span> | JARVIS Approved
+      </p>
+    </div>
+    <div class="footer-glow"></div>
+  </footer>
+
+  <!-- SIMPLE JS: Auto-fill bars + Year -->
+  <script>
+    // Auto Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Animate all skill bars
+    document.querySelectorAll('.skill-fill').forEach(bar => {
+      setTimeout(() => {
+        const percent = bar.getAttribute('data-percent');
+        bar.style.width = percent + '%';
+      }, 300);
+    });
+  </script>
+</body>
+</html>
