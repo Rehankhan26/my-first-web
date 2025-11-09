@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BLACKY-A1 | AI Chaos Engine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kk.css" />
+</head>
+<body>
+
+  <!-- NAV BAR -->
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="#" class="active">BLACKY-A1</a>
+  </nav>
+
+  <div class="container">
+    <div class="chat-header">
+      <h1>BLACKY<span class="blink">_</span>A1</h1>
+      <p class="status" id="status">Online • Ready</p>
+    </div>
+
+    <div class="chat-box" id="chatBox">
+      <div class="msg ai-msg">
+        <div class="bubble">Yo, I'm <span class="glow">BLACKY-A1</span>.<br>Ask me anything — <strong>faster than Groq, sharper than ChatGPT</strong>.</div>
+      </div>
+    </div>
+
+    <!-- INPUT AREA -->
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Type your chaos..." autocomplete="off" />
+      <button id="sendBtn" class="send-btn">SEND</button>
+      <button id="voiceBtn" class="mic-btn">MIC</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
